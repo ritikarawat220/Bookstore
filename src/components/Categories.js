@@ -1,6 +1,6 @@
 import React from "react";
 
-const categories = () => {
+const Categories = () => {
     <div className="categories">
         <div className="text">
             <button>Check Status</button>
@@ -8,4 +8,4 @@ const categories = () => {
     </div>
 };
 
-export default categories;
+export default Categories;
