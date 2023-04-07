@@ -158,7 +158,13 @@ You can deploy this project using [Github Pages]()
 
 <!-- AUTHORS -->
 
+## 👥 Authors <a name="authors"></a>
 
+👤 **Ritika Rawat**
+
+- GitHub: [ritikarawat220](https://github.com/ritikarawat220)
+- Twitter: [@ritikarawat22](https://twitter.com/Ritikarawat22)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/rawatritika/)
 
 
 
