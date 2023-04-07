@@ -180,7 +180,7 @@ You can deploy this project using [Github Pages]()
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page]().
+Feel free to check the [issues page](https://github.com/ritikarawat220/Bookstore/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
