@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  <main>
+  <nav>
     <h1>BOOKSTORE</h1>
     <ul>
       <li>
@@ -12,7 +12,7 @@ const Navbar = () => {
         <Link to="/Categories">CATEGORIES</Link>
       </li>
     </ul>
-  </main>;
+  </nav>;
 };
 
 export default Navbar;

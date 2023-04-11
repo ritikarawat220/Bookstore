@@ -5,20 +5,18 @@ import BookDisplay from './BookDisplay';
 const BookList = () => {
   const books = useSelector((state) => state.books);
   return (
-    <>
-      <div className="book_content">
-        <ul>
-          {books.books.map((book) => (
-            <BookDisplay
-              Title={book.Title}
-              Author={book.Author}
-              key={book.id}
-              Id={book.id}
-            />
-          ))}
-        </ul>
-      </div>
-    </>
+    <div className="book_content">
+      <ul>
+        {books.map((book) => (
+          <BookDisplay
+            Title={book.title}
+            Author={book.author}
+            key={book.item_id}
+            Id={book.item_id}
+          />
+        ))}
+      </ul>
+    </div>
   );
 };
 

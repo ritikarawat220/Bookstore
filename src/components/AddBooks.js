@@ -9,7 +9,7 @@ const AddBook = () => {
     author: '',
   });
 
-  const arr = useSelector((state) => state.books.books);
+  const arr = useSelector((state) => state.books);
   const id = arr.length;
   const onChange = (event) => {
     setnewState({

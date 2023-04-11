@@ -13,7 +13,7 @@ const Categories = () => {
   return (
     <div className="categories">
       <div className="text">
-        <h2>{selectCategories.categories[0]}</h2>
+        <h2>{selectCategories}</h2>
         <button type="submit" onClick={handleClick}>Check Status</button>
       </div>
     </div>
