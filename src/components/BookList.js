@@ -1,8 +1,6 @@
 import React from 'react';
-import BookDisplay from './BookDisplay';
 import { useSelector } from 'react-redux';
-
-
+import BookDisplay from './BookDisplay';
 
 const BookList = () => {
   const books = useSelector((state) => state.books);
