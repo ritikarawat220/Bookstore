@@ -5,7 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './redux/store';
 import './index.css';
 import App from './App';
-// import Navbar from './components/Navbar';
 import { fetchBooks } from './redux/books/booksSlice';
 
 store.dispatch(fetchBooks());
