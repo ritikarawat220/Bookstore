@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addBook } from '../redux/books/booksSlice';
+import { addingBook } from '../redux/booksFetcher';
 
-const AddBook = () => {
+const AddBookForm = () => {
   const [newState, setnewState] = useState({
     id: '',
     title: '',
     author: '',
+    category: '',
   });
 
   const arr = useSelector((state) => state.books);
   const id = arr.length;
-  const onChange = (event) => {
+
+  const onChangeHandler = (event) => {
     setnewState({
       ...newState,
       id: (id + 1).toString(),
       [event.target.name]: event.target.value,
+      category: 'Category Action',
     });
   };
 
@@ -23,41 +26,41 @@ const AddBook = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(addBook(newState));
+    dispatch(addingBook(newState));
     setnewState({
       id: '',
       title: '',
       author: '',
+      category: 'Category Action',
     });
   };
 
   return (
     <div className="add_book">
-      <h1>ADD NEW BOOK</h1>
+      <h2>ADD NEW BOOK</h2>
       <div>
         <form onSubmit={onSubmitHandler}>
           <input
             type="text"
             name="title"
-            placeholder="Book Title"
+            placeholder="Add Title"
             required
             value={newState.title}
-            onChange={onChange}
+            onChange={onChangeHandler}
           />
-
           <input
             type="text"
             name="author"
-            placeholder="Author"
+            placeholder="Add Author"
             required
             value={newState.author}
-            onChange={onChange}
+            onChange={onChangeHandler}
           />
-          <button type="submit">ADD BOOK</button>
+          <button type="submit">ADD BOOK </button>
         </form>
       </div>
     </div>
   );
 };
 
-export default AddBook;
+export default AddBookForm;
