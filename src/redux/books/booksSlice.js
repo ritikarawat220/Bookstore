@@ -1,49 +1,58 @@
-import { createSlice } from '@reduxjs/toolkit';
+import axios from "axios"; // eslint-disable-line
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/EUo9pb3a4RVtCmIUmiJ3/books';
 const initialState = {
-  numberOfBooks: '3',
-  books: [
-    {
-      item_id: 'item1',
-      title: 'The Great Gatsby',
-      author: 'John Smith',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item2',
-      title: 'Anna Karenina',
-      author: 'Leo Tolstoy',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item3',
-      title: 'The Selfish Gene',
-      author: 'Richard Dawkins',
-      category: 'Nonfiction',
-    },
-  ],
+  books: [],
+  status: 'idle',
+  error: null,
 };
+
+export const fetchBooks = createAsyncThunk('posts/fetchBooks', async () => {
+  const response = await axios.get(url);
+  return response.data;
+});
+
+export const addNewBook = createAsyncThunk(
+  'posts/addNewBook',
+  async (initialBook, { dispatch }) => {
+    const response = await axios.post(url, initialBook);
+    dispatch(fetchBooks());
+    return response.data;
+  },
+);
+
+export const deleteBook = createAsyncThunk(
+  'posts/deleteBook',
+  async (initialBook, { dispatch }) => {
+    const response = await axios.delete(`${url}/${initialBook}`, initialBook);
+    dispatch(fetchBooks());
+    return response.data;
+  },
+);
 
 const booksSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {
-    addBook(state, action) {
-      return {
-        ...state,
-        numberOfBooks: parseInt(state.numberOfBooks, 10) + 1,
-        books: [...state.books, action.payload],
-      };
-    },
-    removeBook(state, action) {
-      return {
-        ...state,
-        numberOfBooks: parseInt(state.numberOfBooks, 10) - 1,
-        books: [...state.books.filter((book) => book.id !== action.payload)],
-      };
-    },
+  reducers: { },
+  extraReducers(builder) {
+    /* eslint-disable */
+    builder
+      .addCase(fetchBooks.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchBooks.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.books = action.payload
+      })
+      .addCase(fetchBooks.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
+    /* eslint-enable */
   },
 });
 
-export const { addBook, removeBook } = booksSlice.actions;
+export const { bookAdded, bookRemoved } = booksSlice.actions;
+
 export default booksSlice.reducer;

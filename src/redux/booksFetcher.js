@@ -40,8 +40,7 @@ const bookFetcher = createSlice({
   extraReducers: {
     [gettingBooks.pending]: (state) => ({ ...state, loading: true }),
     [gettingBooks.fulfilled]: (state, action) => (
-      { ...state, loading: false, books: action.payload }
-    ),
+      { ...state, loading: false, books: action.payload }),
     [gettingBooks.rejected]: (state) => ({ ...state, loading: false }),
   },
 });

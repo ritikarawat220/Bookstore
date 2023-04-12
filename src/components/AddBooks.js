@@ -1,66 +1,59 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addingBook } from '../redux/booksFetcher';
+import React, { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addNewBook } from '../redux/books/booksSlice';
 
-const AddBookForm = () => {
-  const [newState, setnewState] = useState({
-    id: '',
-    title: '',
-    author: '',
-    category: '',
-  });
+const AddBooks = () => {
+  const [addRequestStatus, setAddRequestStatus] = useState('idle');
 
-  const arr = useSelector((state) => state.books);
-  const id = arr.length;
-
-  const onChangeHandler = (event) => {
-    setnewState({
-      ...newState,
-      id: (id + 1).toString(),
-      [event.target.name]: event.target.value,
-      category: 'Category Action',
-    });
-  };
-
+  const titleVal = useRef();
+  const authorVal = useRef();
   const dispatch = useDispatch();
 
-  const onSubmitHandler = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
-    dispatch(addingBook(newState));
-    setnewState({
-      id: '',
-      title: '',
-      author: '',
-      category: 'Category Action',
-    });
+    if (!titleVal.current.value || !authorVal.current.value || addRequestStatus !== 'idle') return;
+    try {
+      setAddRequestStatus('pending');
+      dispatch(
+        addNewBook({
+          item_id: Math.random().toString(36).substring(2, 15)
+            + Math.random().toString(36).substring(2, 15),
+          title: titleVal.current.value,
+          author: authorVal.current.value,
+          category: '',
+        }),
+      );
+      titleVal.current.value = '';
+      authorVal.current.value = '';
+    } catch (err) {
+      // console.error('Failed to save the post: ', err);
+    } finally {
+      setAddRequestStatus('idle');
+    }
   };
-
   return (
     <div className="add_book">
-      <h2>ADD NEW BOOK</h2>
-      <div>
-        <form onSubmit={onSubmitHandler}>
-          <input
-            type="text"
-            name="title"
-            placeholder="Add Title"
-            required
-            value={newState.title}
-            onChange={onChangeHandler}
-          />
-          <input
-            type="text"
-            name="author"
-            placeholder="Add Author"
-            required
-            value={newState.author}
-            onChange={onChangeHandler}
-          />
-          <button type="submit">ADD BOOK </button>
-        </form>
-      </div>
+      <h1>ADD NEW BOOK</h1>
+      <form>
+        <input
+          type="text"
+          name="title"
+          placeholder="Book Title"
+          ref={titleVal}
+        />
+
+        <input
+          type="text"
+          name="author"
+          placeholder="Author"
+          ref={authorVal}
+        />
+        <button type="submit" onClick={handleClick} value="Submit">
+          ADD BOOK
+        </button>
+      </form>
     </div>
   );
 };
 
-export default AddBookForm;
+export default AddBooks;
