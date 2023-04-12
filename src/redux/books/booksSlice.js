@@ -1,38 +1,58 @@
-import { createSlice } from '@reduxjs/toolkit';
+import axios from "axios"; // eslint-disable-line
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const initialState = [
-  {
-    item_id: 'item1',
-    title: 'The Great Gatsby',
-    author: 'John Smith',
-    category: 'Fiction',
+const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/EUo9pb3a4RVtCmIUmiJ3/books';
+const initialState = {
+  books: [],
+  status: 'idle',
+  error: null,
+};
+
+export const fetchBooks = createAsyncThunk('posts/fetchBooks', async () => {
+  const response = await axios.get(url);
+  return response.data;
+});
+
+export const addNewBook = createAsyncThunk(
+  'posts/addNewBook',
+  async (initialBook, { dispatch }) => {
+    const response = await axios.post(url, initialBook);
+    dispatch(fetchBooks());
+    return response.data;
   },
-  {
-    item_id: 'item2',
-    title: 'Anna Karenina',
-    author: 'Leo Tolstoy',
-    category: 'Fiction',
+);
+
+export const deleteBook = createAsyncThunk(
+  'posts/deleteBook',
+  async (initialBook, { dispatch }) => {
+    const response = await axios.delete(`${url}/${initialBook}`, initialBook);
+    dispatch(fetchBooks());
+    return response.data;
   },
-  {
-    item_id: 'item3',
-    title: 'The Selfish Gene',
-    author: 'Richard Dawkins',
-    category: 'Nonfiction',
-  },
-];
+);
 
 const booksSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {
-    addBook(state, action) {
-      state.push(action.payload);
-    },
-    removeBook(state, action) {
-      return state.filter((book) => book.item_id !== action.payload);
-    },
+  reducers: { },
+  extraReducers(builder) {
+    /* eslint-disable */
+    builder
+      .addCase(fetchBooks.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchBooks.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.books = action.payload
+      })
+      .addCase(fetchBooks.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
+    /* eslint-enable */
   },
 });
 
-export const { addBook, removeBook } = booksSlice.actions;
+export const { bookAdded, bookRemoved } = booksSlice.actions;
+
 export default booksSlice.reducer;
