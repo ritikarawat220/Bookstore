@@ -31,7 +31,7 @@ const BookDisplay = (props) => {
           <button type="button" className="butt">
             Comments
           </button>
-          <button type="submit" className="Remove Text-Style-8" onClick={handleRemove}>
+          <button type="submit" className="remove-btn" onClick={handleRemove}>
             Remove
           </button>
           <button type="button" className="butt">
