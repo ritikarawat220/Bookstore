@@ -27,10 +27,17 @@ const BookDisplay = (props) => {
         <h3 className="book-author">
           {author}
         </h3>
-
-        <button type="submit" className="Remove Text-Style-8" onClick={handleRemove}>
-          Remove
-        </button>
+        <div className="book-butts">
+          <button type="button" className="butt">
+            Comments
+          </button>
+          <button type="submit" className="Remove Text-Style-8" onClick={handleRemove}>
+            Remove
+          </button>
+          <button type="button" className="butt">
+            Edit
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -34,14 +34,6 @@ const BookList = () => {
             </li>
           ))}
         </ul>
-        <div className="book-butts">
-          <button type="button" className="butt">
-            Comments
-          </button>
-          <button type="button" className="butt">
-            Edit
-          </button>
-        </div>
 
         <div className="book-right">
           <div className="perc-left">
