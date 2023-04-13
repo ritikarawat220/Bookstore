@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import './Categories.css';
 
 export default function Categories() {
-  const [visible, setVisible] = useState(false);
-  const handleClick = () => setVisible(!visible);
   return (
     <div className="categories">
       <div className="text">
-        <button type="submit" onClick={handleClick}>Check Status</button>
+        <h1>Under Construction</h1>
       </div>
     </div>
   );
