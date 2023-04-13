@@ -21,7 +21,7 @@ const AddBooks = () => {
             + Math.random().toString(36).substring(2, 15),
           title: titleVal.current.value,
           author: authorVal.current.value,
-          category: '',
+          category: 'Action',
         }),
       );
       titleVal.current.value = '';

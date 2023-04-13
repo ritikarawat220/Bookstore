@@ -17,13 +17,14 @@ const BookList = () => {
 
   return (
     <div className="book_content">
-      <ul>
+      <ul className="list">
         {bookStatus === 'succeeded'
           && Object.keys(books.books).map((key) => (
             <li key={key}>
               <BookDisplay
                 title={books.books[key][0].title}
                 author={books.books[key][0].author}
+                category={books.books[key][0].category}
                 id={key}
               />
               <hr />

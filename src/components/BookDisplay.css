@@ -1,0 +1,36 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.book-category,
+.book-title,
+.book-author {
+  text-align: start;
+}
+
+.book-category {
+  font-size: 0.875rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: gray;
+  font-family: "Roboto Slab", serif;
+}
+
+.book-title {
+  font-family: "Roboto Slab", serif;
+  letter-spacing: -0.2px;
+  font-size: 1.375rem;
+  font-weight: bold;
+  list-style: none;
+}
+
+.book-author {
+  font-family: "Roboto Slab", serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #4386bf;
+}
