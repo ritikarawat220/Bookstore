@@ -1,12 +1,44 @@
 .book-content {
   width: 100%;
   display: flex;
-  padding: 1.5rem;
+  padding: 4%;
   margin-bottom: 0.3rem;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 6px 6px 10px -1px rgba(255, 255, 255, 0.7);
   border: 1px solid #e4e2e2c2;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 0.938rem;
+  gap: 0.938rem;
+  margin-left: 10px;
+}
+
+.list::-webkit-scrollbar,
+.list::-webkit-scrollbar-thumb {
+  width: 26px;
+  border-radius: 13px;
+  background-clip: padding-box;
+  border: 10px solid transparent;
+}
+
+.list::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0 10px;
+}
+
+.list li {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+  padding: 2rem;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .book-right {
@@ -31,9 +63,7 @@
 
 .circle-outer {
   width: 84px;
-  height: 84px;
   border-radius: 50%;
-  padding: 10px;
   box-shadow:
     6px 6px 10px -1px rgba(0, 0, 0, 0.15),
     -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
@@ -70,9 +100,8 @@ circle {
 }
 
 svg {
-  position: absolute;
-  left: 2%;
-  top: -10%;
+  left: 7%;
+  top: 10%;
 }
 
 .pers {
@@ -119,4 +148,11 @@ svg {
 .circle-right {
   display: flex;
   flex-direction: column;
+}
+
+.divider {
+  height: 0.125rem;
+  background-color: #e8e8e8;
+  width: 100%;
+  margin: 2.5rem 0 1.813rem;
 }

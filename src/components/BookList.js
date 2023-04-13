@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { CircularProgressbar } from 'react-circular-progressbar';
 import BookDisplay from './BookDisplay';
 import { fetchBooks } from '../redux/books/booksSlice';
 import './BookList.css';
+import AddBooks from './AddBooks';
 
 const BookList = () => {
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ const BookList = () => {
           <div className="perc-right">
             <div className="perc-rightin">
               <h4>CURRENT CHAPTER</h4>
-              <p>Chapter 10</p>
+              <p>Chapter 17</p>
               <div>
                 <button type="button">UPDATE PROGRESS</button>
                 {' '}
@@ -72,7 +72,10 @@ const BookList = () => {
             </div>
           </div>
         </div>
+        <div className="divider" />
+        <AddBooks />
       </div>
+
     </>
   );
 };
