@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .add-book {
   width: 100%;
 }
@@ -8,21 +13,24 @@
 }
 
 .book-form form {
+  margin-top: 20px;
   display: flex;
-  align-items: center;
-  gap: 16px;
+  grid-gap: 32px;
+  gap: 32px;
 }
 
 .book-form h1 {
-  font-family: "Montserrat", sans-serif;
+  margin-left: 30px;
   font-size: 1.25rem;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: -0.18px;
   color: #888;
+  font-family: "Montserrat", sans-serif;
 }
 
 .book-form form input {
-  width: 80%;
+  margin-left: 10px;
+  width: 39%;
   padding: 12px;
   border-radius: 4px;
   height: 28px;
@@ -37,6 +45,7 @@
 .submit-btn {
   cursor: pointer;
   padding: 12px;
+  margin-right: 10px;
 
   /* width: 20%; */
   border: none;
@@ -44,7 +53,7 @@
   background-color: #0290ff;
   color: #fff;
   font-weight: 700;
-  width: 11.5rem;
+  width: 10.5rem;
   height: 50px;
   letter-spacing: 1px;
 }

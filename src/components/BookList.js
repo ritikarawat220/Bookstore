@@ -33,6 +33,7 @@ const BookList = () => {
             </li>
           ))}
         </ul>
+        <div className="horizontal-divider" />
         <AddBooks />
       </div>
 

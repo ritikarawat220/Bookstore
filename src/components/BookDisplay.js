@@ -18,25 +18,27 @@ const BookDisplay = (props) => {
   return (
     <div className="main" data-id={id}>
       <div className="wrapper">
-        <div className="book-category">
-          {category}
-        </div>
-        <h2 className="book-title">
-          {title}
-        </h2>
-        <h3 className="book-author">
-          {author}
-        </h3>
-        <div className="book-butts">
-          <button type="button" className="butt">
-            Comments
-          </button>
-          <button type="submit" className="remove-btn" onClick={handleRemove}>
-            Remove
-          </button>
-          <button type="button" className="butt">
-            Edit
-          </button>
+        <div className="book-info">
+          <div className="book-category">
+            {category}
+          </div>
+          <h2 className="book-title">
+            {title}
+          </h2>
+          <h3 className="book-author">
+            {author}
+          </h3>
+          <div className="book-butts">
+            <button type="button" className="butt">
+              Comments
+            </button>
+            <button type="submit" className="remove-btn" onClick={handleRemove}>
+              Remove
+            </button>
+            <button type="button" className="butt">
+              Edit
+            </button>
+          </div>
         </div>
         <div className="book-right">
           <div className="perc-left">
@@ -63,6 +65,7 @@ const BookDisplay = (props) => {
               <p className="pers">77%</p>
               <p className="comp">Completed</p>
             </div>
+            <div className="progress-divider" />
           </div>
           <div className="perc-right">
             <div className="perc-rightin">
