@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addNewBook } from '../redux/books/booksSlice';
+import './AddBook.css';
 
 const AddBooks = () => {
   const [addRequestStatus, setAddRequestStatus] = useState('idle');
@@ -20,7 +21,7 @@ const AddBooks = () => {
             + Math.random().toString(36).substring(2, 15),
           title: titleVal.current.value,
           author: authorVal.current.value,
-          category: '',
+          category: 'Action',
         }),
       );
       titleVal.current.value = '';
@@ -33,25 +34,27 @@ const AddBooks = () => {
   };
   return (
     <div className="add_book">
-      <h1>ADD NEW BOOK</h1>
-      <form>
-        <input
-          type="text"
-          name="title"
-          placeholder="Book Title"
-          ref={titleVal}
-        />
+      <div className="book-form">
+        <h1>ADD NEW BOOK</h1>
+        <form>
+          <input
+            type="text"
+            name="title"
+            placeholder="Book Title"
+            ref={titleVal}
+          />
 
-        <input
-          type="text"
-          name="author"
-          placeholder="Author"
-          ref={authorVal}
-        />
-        <button type="submit" onClick={handleClick} value="Submit">
-          ADD BOOK
-        </button>
-      </form>
+          <input
+            type="text"
+            name="author"
+            placeholder="Author"
+            ref={authorVal}
+          />
+          <button type="submit" className="submit-btn" onClick={handleClick} value="Submit">
+            ADD BOOK
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BookDisplay from './BookDisplay';
 import { fetchBooks } from '../redux/books/booksSlice';
+import './BookList.css';
+import AddBooks from './AddBooks';
 
 const BookList = () => {
   const dispatch = useDispatch();
@@ -16,34 +18,26 @@ const BookList = () => {
   }, [bookStatus, dispatch]);
 
   return (
-    <div className="book_content">
-      <ul>
-        {bookStatus === 'succeeded'
+    <>
+      <div className="book_content">
+        <ul className="list">
+          {bookStatus === 'succeeded'
           && Object.keys(books.books).map((key) => (
             <li key={key}>
               <BookDisplay
                 title={books.books[key][0].title}
                 author={books.books[key][0].author}
+                category={books.books[key][0].category}
                 id={key}
               />
-              <hr />
             </li>
           ))}
-      </ul>
-      <div>
-        <div>
-          <p>85%</p>
-          <p>Completed</p>
-        </div>
+        </ul>
+        <div className="horizontal-divider" />
+        <AddBooks />
       </div>
-      <div>
-        <h4>CURRENT CHAPTER</h4>
-        <p>Chapter 3: “Learning”</p>
-        <div>
-          <button type="button">UPDATE PROGRESS</button>
-        </div>
-      </div>
-    </div>
+
+    </>
   );
 };
 

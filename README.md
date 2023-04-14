@@ -75,6 +75,11 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Live Demo <a name="live-demo"></a>
+
+[Live DemO](https://book-store-mpf2.onrender.com/)
+
+
 #### 🔭 Future Features <a name="future-features"></a>
 
 - [ ] **Add a book**
@@ -195,7 +200,7 @@ If you like this project give me a star.
 <!-- ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
+I would like to thank Microverse for offering me this opportunity to learn, and practice my skills.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
